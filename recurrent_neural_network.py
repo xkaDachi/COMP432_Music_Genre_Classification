@@ -77,24 +77,48 @@ def build_model(input_shape):
     """
 
     # build network topology
-    model = keras.Sequential()
+    # model = keras.Sequential()
+    model = torch.nn.Sequential()
 
     # 2 LSTM layers
+
+    # tf.keras.layers.LSTM(
+    # units, activation='tanh', recurrent_activation='sigmoid',
+    # use_bias=True, kernel_initializer='glorot_uniform',
+    # recurrent_initializer='orthogonal',
+    # bias_initializer='zeros', unit_forget_bias=True,
+    # kernel_regularizer=None, recurrent_regularizer=None, bias_regularizer=None,
+    # activity_regularizer=None, kernel_constraint=None, recurrent_constraint=None,
+    # bias_constraint=None, dropout=0.0, recurrent_dropout=0.0,
+    # return_sequences=False, return_state=False, go_backwards=False, stateful=False,
+    # time_major=False, unroll=False, **kwargs
+    # )
+
+    # torch.nn.LSTM(input_size , hidden_size , num_layers , bias , batch_first , dropout , bidirectional , proj_size )
     model.add(keras.layers.LSTM(64, input_shape=input_shape, return_sequences=True))
     model.add(keras.layers.LSTM(64))
 
+    model.add(torch.nn.LSTM(input_size=64, hidden_size=64)) # hidden_size=64??? input_shape???
+    model.add(torch.nn.LSTM(input_size=64))
+
     # dense layer
-    model.add(keras.layers.Dense(64, activation='relu'))
-    model.add(keras.layers.Dropout(0.3))
+    # model.add(keras.layers.Dense(64, activation='relu'))
+    model.add(torch.nn.Linear(out_features=64))
+    model.add(torch.nn.ReLU())
+
+    # model.add(keras.layers.Dropout(0.3))
+    model.add(torch.nn.Dropout(p=0.3)) #30% or 0.3 == rate for overfitting
+
 
     # output layer
-    model.add(keras.layers.Dense(10, activation='softmax'))
+    # model.add(keras.layers.Dense(10, activation='softmax'))
+    model.add(torch.nn.Linear(out_features=10))
+    model.add(torch.nn.Softmax())
 
     return model
 
 
-if __name__ == "__main__":
-
+def main():
     # get train, validation, test splits
     X_train, X_validation, X_test, y_train, y_validation, y_test = prepare_datasets(0.25, 0.2)
 
@@ -103,7 +127,7 @@ if __name__ == "__main__":
     model = build_model(input_shape)
 
     # compile model
-    optimiser = keras.optimizers.Adam(learning_rate=0.0001)
+    optimiser = torch.optim.Adam(learning_rate=0.0001)
     model.compile(optimizer=optimiser,
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
@@ -119,3 +143,7 @@ if __name__ == "__main__":
     # evaluate model on test set
     test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
     print('\nTest accuracy:', test_acc)
+
+
+if __name__ == "__main__":
+    main()
