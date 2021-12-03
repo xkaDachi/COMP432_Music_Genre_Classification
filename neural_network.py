@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import torch
 
 # path to json file that stores MFCCs and genre labels for each processed segment
-DATA_PATH = "/data.json"
+# DATA_PATH = "/data.json"
+DATA_PATH = "./data.json"  # for windows
 
 
 def load_data(data_path):
@@ -62,24 +63,24 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
     # build network topology
-    model = torch.Sequential([
+    model = torch.nn.Sequential([
 
         # input layer
-        torch.flatten(input_shape=(X.shape[1], X.shape[2])),
+        torch.nn.Flatten((X.shape[1], X.shape[2])),
 
         # 1st dense layer
         torch.nn.Linear(512, activation='relu',
-                        kernel_regularizer=torch.norm(0.001, p=2)),
+                        kernel_regularizer=torch.norm(input=0.001, dtype=torch.float)),
         torch.nn.Dropout(0.3),
 
         # 2nd dense layer
         torch.nn.Linear(256, activation='relu',
-                        kernel_regularizer=torch.norm(0.001, p=2)),
+                        kernel_regularizer=torch.norm(input=0.001, dtype=torch.float)),
         torch.nn.Dropout(0.3),
 
         # 3rd dense layer
         torch.nn.Linear(64, activation='relu',
-                        kernel_regularizer=torch.norm(0.001, p=2)),
+                        kernel_regularizer=torch.norm(input=0.001, dtype=torch.float)),
         torch.nn.Dropout(0.3),
 
         # output layer
