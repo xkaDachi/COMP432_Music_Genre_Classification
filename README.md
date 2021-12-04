@@ -40,7 +40,7 @@ python3 preprocessing.py
 ```
 - run both convolution neural network and recurrent neural network models
 ```console
-$ python3 convolutional_neural_network.py & python3 recurrent_neural_network.py
+python3 convolutional_neural_network.py & python3 recurrent_neural_network.py
 ```
 - program provides output to the screen as well as data given within the output folder for each task respectively
 
