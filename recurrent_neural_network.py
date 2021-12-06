@@ -4,16 +4,14 @@ from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
 
-DATA_PATH = "/data.json"
+DATA_PATH = "data.json"
 
-
+# Loads training dataset from json file.
+# >param data_path (str): Path to json file containing data
+# >return X (ndarray): Inputs
+# >return y (ndarray): Targets
 def load_data(data_path):
-    """Loads training dataset from json file.
-        :param data_path (str): Path to json file containing data
-        :return X (ndarray): Inputs
-        :return y (ndarray): Targets
-    """
-
+    
     with open(data_path, "r") as fp:
         data = json.load(fp)
 
@@ -21,13 +19,10 @@ def load_data(data_path):
     y = np.array(data["labels"])
     return X, y
 
-
+# plots accuracy/loss for training/validation set as a function of the epochs
+# >parameter history: Training history of model
+# >return: history graph
 def plot_history(history):
-    """Plots accuracy/loss for training/validation set as a function of the epochs
-        :param history: Training history of model
-        :return:
-    """
-
     fig, axs = plt.subplots(2)
 
     # create accuracy subplot
@@ -47,19 +42,16 @@ def plot_history(history):
 
     plt.show()
 
-
+# Loads data and splits it into train, validation and test sets.
+# >param test_size (float): Value in [0, 1] indicating percentage of data set to allocate to test split
+# >param validation_size (float): Value in [0, 1] indicating percentage of train set to allocate to validation split
+# >return X_train (ndarray): Input training set
+# >return X_validation (ndarray): Input validation set
+# >return X_test (ndarray): Input test set
+# >return y_train (ndarray): Target training set
+# >return y_validation (ndarray): Target validation set
+# >return y_test (ndarray): Target test set
 def prepare_datasets(test_size, validation_size):
-    """Loads data and splits it into train, validation and test sets.
-    :param test_size (float): Value in [0, 1] indicating percentage of data set to allocate to test split
-    :param validation_size (float): Value in [0, 1] indicating percentage of train set to allocate to validation split
-    :return X_train (ndarray): Input training set
-    :return X_validation (ndarray): Input validation set
-    :return X_test (ndarray): Input test set
-    :return y_train (ndarray): Target training set
-    :return y_validation (ndarray): Target validation set
-    :return y_test (ndarray): Target test set
-    """
-
     # load data
     X, y = load_data(DATA_PATH)
 
@@ -69,12 +61,10 @@ def prepare_datasets(test_size, validation_size):
 
     return X_train, X_validation, X_test, y_train, y_validation, y_test
 
-
+# Generates RNN-LSTM model
+# >parameter input_shape (tuple): Shape of input set
+# >return model: RNN-LSTM model
 def build_model(input_shape):
-    """Generates RNN-LSTM model
-    :param input_shape (tuple): Shape of input set
-    :return model: RNN-LSTM model
-    """
 
     # build network topology
     model = keras.Sequential()
