@@ -3,23 +3,21 @@ import os
 import math
 import librosa
 
-DATASET_PATH = "data/genres"
+DATASET_PATH = "Data/genres"
 JSON_PATH = "data.json"
 SAMPLE_RATE = 22050  # music processing
 TRACK_DURATION = 30  # measured in seconds
 SAMPLES_PER_TRACK = SAMPLE_RATE * TRACK_DURATION
 
-
+# Extracts MFCCs from music dataset and saves them into a json file along witgh genre labels.
+# >parameter dataset_path (str): path to dataset
+# >parameter json_path (str): path to json file used to save MFCCs
+# >parameter num_mfcc (int): nb of coefficients to extract
+# >parameter n_fft (int): interval to consider to apply FFT. Measured in # of samples
+# >parameter hop_length (int): sliding window for FFT. Measured in # of samples
+# >parameter num_segments (int): nb of segments we want to divide sample tracks into
+# >return
 def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, num_segments=5):
-    """Extracts MFCCs from music dataset and saves them into a json file along witgh genre labels.
-        :param dataset_path (str): Path to dataset
-        :param json_path (str): Path to json file used to save MFCCs
-        :param num_mfcc (int): Number of coefficients to extract
-        :param n_fft (int): Interval we consider to apply FFT. Measured in # of samples
-        :param hop_length (int): Sliding window for FFT. Measured in # of samples
-        :param: num_segments (int): Number of segments we want to divide sample tracks into
-        :return:
-        """
 
     # dictionary to store mapping, labels, and MFCCs
     data = {
