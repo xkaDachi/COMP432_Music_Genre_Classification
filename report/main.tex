@@ -1,0 +1,77 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+% used for enhanced justification
+\usepackage{microtype}
+
+\usepackage[margin=0.6in]{geometry}
+
+% used for indexing
+\usepackage{index}
+\makeindex
+
+% used for images
+\usepackage{graphics}
+\graphicspath{ {./images/} }
+
+% used for adjusting alignment for images
+\usepackage[export]{adjustbox}
+
+% used to stop images floating in strange ways
+\usepackage[section]{placeins}
+
+% used for nicer headers
+\usepackage{fancyhdr}
+
+% for the tables
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+% for pseudocode
+\usepackage{listings}
+
+% math packages
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{BitByteBeat: The Music Genre Classification Bot}
+\author{Siu Ye, Johnny On, Chelsie Ng, Tyler Shanks}
+\date{December 6 2021}
+
+\begin{document}
+\include{titlepage}
+
+
+\fancyfoot{\thepage}
+
+%\tableofcontents
+%\addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+%\newpage
+
+
+% difference between \input and \include is that \include puts a \newpage after the 
+% ref'd section is done
+\input{sections/abstract}
+\input{sections/intro}
+% \input{sections/intro-2}
+\input{sections/methods}
+\input{sections/evaluation}
+
+% Bibliography here
+% \newpage
+\input{sections/refs}
+
+\end{document}
