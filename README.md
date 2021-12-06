@@ -40,7 +40,7 @@ pip3 install -r requirements.txt
 
 
 ## Jupyter Notebook
-- run the `Music Classification.ipynb` file from a Jupyter Notebook
+- run the [Music Classification.ipynb](https://github.com/xkaDachi/COMP432_Music_Genre_Classification/blob/main/Music%20Classification.ipynb) file from a Jupyter Notebook
 
 *Note*: The notebook can be previewed directly on GitHub without installing any additional software.
 
