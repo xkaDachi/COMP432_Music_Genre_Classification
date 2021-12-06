@@ -10,7 +10,6 @@ DATA_PATH = "data.json"
 # >param data_path (str): Path to json file containing data
 # >return X (ndarray): Inputs
 # >return y (ndarray): Targets
-#
 def load_data(data_path):
 
     with open(data_path, "r") as fp:
