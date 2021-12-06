@@ -7,18 +7,28 @@ This repository contains our src code for the COMP432 Machine Learning Project. 
 
 ## Dataset
 Our dataset comes from the [GTZAN Dataset - Music Genre Classification](https://www.kaggle.com/andradaolteanu/gtzan-dataset-music-genre-classification/) which is a popular public dataset for music genre recognition (MGR). This is a 1.41 GB folder containing training data that was used to train our models. The particular folder of interest was the Data/genres_original as it contained a collection of 10 genres with 100 audio (.wav) files each. These files were all 30 seconds in length. The 10 genres within this set are:
-1. blues
-2. classical
-3. country
-4. disco
-5. hiphop
-6. jazz
-7. metal
-8. pop
-9. reggae
-10. rock
+
+| Genre       |
+| :---------- |
+| `blues`     |
+| `classical` |
+| `country`   |
+| `disco`     |
+| `hiphop`    |
+| `jazz`      |
+| `metal`     |
+| `pop`       |
+| `reggae`    |
+| `rock`      |
+
 
 We would like to note that sample 54 within the jazz set was discarded when training the models as the file was corrupted.
+
+
+## Tech Stack
+
+Python 3.6
+
 
 
 ## Installation
@@ -45,3 +55,11 @@ python3 convolutional_neural_network.py & python3 recurrent_neural_network.py
 - program provides output to the screen as well as data given within the output folder for each task respectively
 
 ​
+
+## Authors
+
+- [@Johnny On](https://github.com/xkaDachi)
+- [@Chelsie Ng](https://github.com/chelsieng)
+- [@Tyler Shanks](https://github.com/HunterShanks)
+- [@Siu Ye](https://www.github.com/octokatherine)
+
