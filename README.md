@@ -65,6 +65,6 @@ python3 convolutional_neural_network.py & python3 recurrent_neural_network.py
 
 - [@Johnny On](https://github.com/xkaDachi)
 - [@Chelsie Ng](https://github.com/chelsieng)
-- [@Tyler Shanks](https://github.com/HunterShanks)
+- [@Tyler Shanks](https://github.com/shvnks)
 - [@Siu Ye](https://github.com/SiuYe)
 
